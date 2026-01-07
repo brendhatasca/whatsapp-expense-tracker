@@ -1,0 +1,24 @@
+{
+  "name": "whatsapp-expense-tracker",
+  "version": "1.0.0",
+  "description": "Simple expense tracker using WhatsApp integration",
+  "keywords": [
+    "expenseTracker",
+    "whatsApp"
+  ],
+  "homepage": "https://github.com/brendhatasca/whatsapp-expense-tracker#readme",
+  "bugs": {
+    "url": "https://github.com/brendhatasca/whatsapp-expense-tracker/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/brendhatasca/whatsapp-expense-tracker.git"
+  },
+  "license": "ISC",
+  "author": "Brendha Tasca Jakubiak",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
