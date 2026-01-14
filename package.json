@@ -20,7 +20,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/services/googleSheetsClient.js"
+    "dev": "nodemon src/index.js"
   },
   "dependencies": {
     "body-parser": "^2.2.2",
