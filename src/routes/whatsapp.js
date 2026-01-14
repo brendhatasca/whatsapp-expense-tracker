@@ -10,6 +10,7 @@ import { sendWhatsAppMsg } from '../services/twilioClient.js';
 
 // this handle POST to /whatsapp/webhook
 const router = express.Router();
+const check = "✅";
 
 router.post('/webhook', async (req, res) => {
     const incomingMsg = req.body.Body;
@@ -19,11 +20,22 @@ router.post('/webhook', async (req, res) => {
     console.log("Message body:", incomingMsg);
 
     const twiml = new MessagingResponse();
-    twiml.message('Message received!');
 
-    await sendWhatsAppMsg(from, `You said: ${incomingMsg}`)
+    try {
+        // reply to webhook
+        twiml.message(`${check} Message received!`);
+        await sendWhatsAppMsg(from, `You said: ${incomingMsg}`);
+ 
+    } catch (error) {
+        console.error("Webhook error:", error);
+        twiml.message("Something went wrong. Try again.");
+    }
 
-    res.type('text/xml').send(twiml.toString())
+    // sets the content-type of HTTP res to XML
+    // send() declared that youre done with the req
+    res.status(200)
+        . type('text/xml')
+        .send(twiml.toString());
 });
 
 export default router;
