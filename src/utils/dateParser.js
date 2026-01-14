@@ -1,19 +1,20 @@
 import { parse, format } from 'date-fns';
 
-export function parseDate(date) {
+export function parseDate(dateStr) {
     // take string eg: jan 16 and
     // return Jan 16 2025
-    let rawDate = date;
+    let dateWithYear = dateStr;
 
-    const year = format(new Date(), 'yyyy');
+    const today = new Date();
+    const currentYear = format(today, 'yyyy');
 
-    if (rawDate.split(" ") == 2) {
-        rawDate = `${date} ${year}`
+    if (dateWithYear.split(" ").length == 2) {
+        dateWithYear = `${dateWithYear} ${currentYear}`
     }
 
-    const parsedDate = format(rawDate, 'MMM d yyyy')
+    // Use parse() to convert string into a valid Date obj
+    const parsedDateObj = parse(dateWithYear, 'MMM d yyyy', new Date())
+    const parsedDate = format(parsedDateObj, 'MMM d yyyy')
 
     return parsedDate;
 }
-
-console.log(parseDate('jan 16'))
